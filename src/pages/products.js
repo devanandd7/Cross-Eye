@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/products');
+  const API_URL = process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000';
+  const res = await fetch(`${API_URL}/api/products`);
   const products = await res.json();
   return {
     props: { products },
