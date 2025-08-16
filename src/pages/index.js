@@ -43,6 +43,7 @@ export default function Home() {
           </div>
         </section>
 
+
         {/* Vision & Mission Section */}
         <section id="vision-mission" className="py-16">
           <div className="max-w-4xl mx-auto px-6 text-center">
@@ -58,6 +59,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
 
         {/* Core Competencies Section */}
         <section id="competencies" className="py-16 bg-white rounded-lg shadow-lg mb-12">
