@@ -1,0 +1,77 @@
+import Head from 'next/head';
+import Link from 'next/link';
+
+export async function getServerSideProps() {
+  const res = await fetch('http://localhost:3000/api/services');
+  const services = await res.json();
+  return { props: { services } };
+}
+
+export default function Services({ services }) {
+  return (
+    <div className="bg-gray-50 text-gray-800 font-sans min-h-screen">
+      <Head>
+        <title>Our Services - CrossEye</title>
+        <meta name="description" content="Discover the wide range of software and hardware services offered by CrossEye." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      {/* Header */}
+      <header className="bg-white shadow-md">
+        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="text-2xl font-bold text-gray-900">CrossEye</Link>
+          <div className="hidden md:flex space-x-6">
+            <Link href="/#about" className="text-gray-600 hover:text-gray-900">About Us</Link>
+            <Link href="/products" className="text-gray-600 hover:text-gray-900">Products</Link>
+            <Link href="/services" className="text-gray-900 font-semibold">Services</Link>
+            <Link href="/#advantage" className="text-gray-600 hover:text-gray-900">Advantage</Link>
+          </div>
+        </nav>
+      </header>
+
+      <main className="container mx-auto px-6 py-12">
+        <section className="text-center py-16">
+          <h1 className="text-5xl font-extrabold text-gray-900 mb-4">Our Services</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            From embedded software to industrial design, we offer end-to-end solutions to bring your ideas to life.
+          </p>
+        </section>
+
+        <section className="py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Link href={`/services/${service._id}`} key={service._id}>
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+                  <div className="relative h-48 w-full">
+                    <img
+                      src={service.mainImageUrl || 'https://via.placeholder.com/400x200'}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-6 flex-grow flex flex-col">
+                    <h3 className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">{service.division}</h3>
+                    <h2 className="text-2xl font-bold text-gray-900 mt-2 mb-3">{service.title}</h2>
+                    <p className="text-gray-700 text-base flex-grow">{service.description}</p>
+                  </div>
+                  <div className="p-6 bg-gray-50 mt-auto">
+                    <div className="w-full bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded hover:bg-indigo-700 transition-colors duration-300">
+                      Learn More
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-8 mt-12">
+        <div className="container mx-auto px-6 text-center">
+          <p>&copy; {new Date().getFullYear()} CrossEye. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
