@@ -31,7 +31,12 @@ export default function LoginPage() {
       if (res.ok) {
         setStatus('Login successful! Redirecting...');
         // In a real app, you'd set a session cookie here
-        router.push('/products'); // Redirect to products page after login
+        const { redirect } = router.query;
+        if (redirect) {
+          router.push(decodeURIComponent(redirect));
+        } else {
+          router.push('/products'); // Default redirect if no specific page was requested
+        }
       } else {
         const data = await res.json();
         setStatus(`Login failed: ${data.message || 'Invalid credentials.'}`);

@@ -1,7 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="bg-gray-50 text-gray-800 font-sans">
       <Head>
@@ -15,11 +20,12 @@ export default function Home() {
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-900">CrossEye</div>
           <div className="hidden md:flex space-x-6">
-            <Link href="#about" className="text-gray-600 hover:text-gray-900">Home</Link>
+            <Link href="/" className="text-gray-600 hover:text-gray-900">Home</Link>
             <Link href="/products" className="text-gray-600 hover:text-gray-900">Products</Link>
             <Link href="/services" className="text-gray-600 hover:text-gray-900">Services</Link>
             <Link href="/contact" className="text-gray-600 hover:text-gray-900">Contact Us</Link>
-          
+            <Link href="/login" className="text-gray-600 hover:text-gray-900">Login</Link>
+            <Link href="/signup" className="text-gray-600 hover:text-gray-900">Sign Up</Link>
           </div>
         </nav>
       </header>
@@ -47,7 +53,7 @@ export default function Home() {
         </section>
 
         {/* About Us Section */}
-        <section id="about" className="py-16 bg-white rounded-lg shadow-lg mb-12">
+        <section className="py-16 bg-white rounded-lg shadow-lg mb-12">
           <div className="max-w-4xl mx-auto px-6">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">The CrossEye Story</h2>
             <p className="text-lg text-gray-700 leading-relaxed">

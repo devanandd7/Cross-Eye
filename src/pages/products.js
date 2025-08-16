@@ -2,10 +2,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch('http://localhost:3000/api/products');
   const products = await res.json();
-  return { props: { products } };
+  return {
+    props: { products },
+    revalidate: 60, // Re-generate the page every 60 seconds
+  };
 }
 
 export default function Products({ products }) {
@@ -29,10 +32,10 @@ export default function Products({ products }) {
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-gray-900">CrossEye</Link>
           <div className="hidden md:flex space-x-6">
-            <Link href="/#about" className="text-gray-600 hover:text-gray-900">About Us</Link>
+            <Link href="/" className="text-gray-600 hover:text-gray-900">home</Link>
             <Link href="/products" className="text-gray-900 font-semibold">Products</Link>
             <Link href="/services" className="text-gray-600 hover:text-gray-900">Services</Link>
-            <Link href="/#advantage" className="text-gray-600 hover:text-gray-900">Advantage</Link>
+            <Link href="/contact" className="text-gray-600 hover:text-gray-900">contact</Link>
           </div>
         </nav>
       </header>
@@ -68,7 +71,7 @@ export default function Products({ products }) {
                       onClick={(e) => handleBuyNowClick(e, product.price)}
                       className="w-full bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded hover:bg-indigo-700 transition-colors duration-300"
                     >
-                      Buy Now
+                      view deatils
                     </button>
                   </div>
                 </div>

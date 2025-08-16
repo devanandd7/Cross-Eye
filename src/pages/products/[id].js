@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { ObjectId } from 'mongodb';
 import clientPromise from '../../../lib/mongodb';
 
@@ -17,6 +19,33 @@ export async function getServerSideProps(context) {
 }
 
 export default function ProductPage({ product }) {
+  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Assuming initial state is not authenticated
+
+  // Function to check authentication status (placeholder)
+  const checkAuthentication = async () => {
+    try {
+      const res = await fetch('/api/check-auth'); // Replace with your actual auth check API
+      if (res.ok) {
+        const data = await res.json();
+        return data.isAuthenticated; // Assuming API returns { isAuthenticated: true/false }
+      }
+      return false;
+    } catch (error) {
+      console.error('Error checking authentication:', error);
+      return false;
+    }
+  };
+
+  const handleBuyNow = async () => {
+    const authenticated = await checkAuthentication();
+    if (authenticated) {
+      router.push(`/checkout?amount=${product.price}`);
+    } else {
+      router.push(`/login?redirect=${encodeURIComponent(router.asPath)}`);
+    }
+  };
+
   return (
     <div className="bg-gray-50 text-gray-800 font-sans min-h-screen">
       <Head>
@@ -61,11 +90,12 @@ export default function ProductPage({ product }) {
             </div>
           </div>
             <div className="mt-8">
-              <Link href={`/checkout?amount=${product.price}`}>
-                <button className="bg-indigo-600 text-white font-bold py-3 px-6 rounded hover:bg-indigo-700 transition-colors duration-300">
-                  Buy Now
-                </button>
-              </Link>
+              <button
+                onClick={handleBuyNow}
+                className="bg-indigo-600 text-white font-bold py-3 px-6 rounded hover:bg-indigo-700 transition-colors duration-300"
+              >
+                Buy Now
+              </button>
             </div>
           </div>
         </div>
