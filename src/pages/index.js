@@ -28,13 +28,14 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
-            <iframe
+            <video
               className="w-full h-full object-cover"
-              src="https://www.youtube.com/embed/LlhmzVL5bm8?autoplay=1&mute=1&loop=1&playlist=LlhmzVL5bm8&controls=0&showinfo=0&modestbranding=1"
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-            ></iframe>
+              src="/IoT_Device_Creation_Video_Ready.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+            ></video>
             <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay for better text readability */}
           </div>
           <div className="relative z-10 text-white text-left w-full px-6 md:px-12">
