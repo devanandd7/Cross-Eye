@@ -26,11 +26,23 @@ export default function Home() {
 
       <main className="container mx-auto px-6 py-12">
         {/* Hero Section */}
-        <section className="text-center py-20">
-          <h1 className="text-5xl font-extrabold text-gray-900 mb-4">Welcome to CrossEye</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We are an innovative startup at the intersection of software and hardware, creating seamless, integrated solutions to build a smarter, more connected world. We are not just a software or hardware company; we are a solutions company.
-          </p>
+        <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 w-full h-full">
+            <iframe
+              className="w-full h-full object-cover"
+              src="https://www.youtube.com/embed/LlhmzVL5bm8?autoplay=1&mute=1&loop=1&playlist=LlhmzVL5bm8&controls=0&showinfo=0&modestbranding=1"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            ></iframe>
+            <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay for better text readability */}
+          </div>
+          <div className="relative z-10 text-white text-left w-full px-6 md:px-12">
+            <h1 className="text-7xl md:text-8xl font-extrabold mb-4 leading-tight">CROSSEYE</h1>
+            <p className="text-2xl md:text-3xl max-w-2xl">
+              We are an innovative startup at the intersection of software and hardware, creating seamless, integrated solutions to build a smarter, more connected world. We are not just a software or hardware company; we are a solutions company.
+            </p>
+          </div>
         </section>
 
         {/* About Us Section */}
