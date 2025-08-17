@@ -77,7 +77,8 @@ export default function CheckoutPage({ order }) {
 
 export async function getServerSideProps(context) {
   const { amount } = context.query; // Get amount from URL query
-  const res = await fetch('http://localhost:3000/api/create-order', {
+  const API_URL = process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000';
+  const res = await fetch(`${API_URL}/api/create-order`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

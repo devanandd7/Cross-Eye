@@ -2,7 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 export async function getServerSideProps() {
-  const res = await fetch('http://localhost:3000/api/services');
+  const API_URL = process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000';
+  const res = await fetch(`${API_URL}/api/services`);
   const services = await res.json();
   return { props: { services } };
 }
