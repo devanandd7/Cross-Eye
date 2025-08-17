@@ -14,6 +14,14 @@ export default function Services({ services }) {
         <title>Our Services - CrossEye</title>
         <meta name="description" content="Discover the wide range of software and hardware services offered by CrossEye." />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content="Our Services - CrossEye" />
+        <meta property="og:description" content="Discover the wide range of software and hardware services offered by CrossEye." />
+        <meta property="og:image" content="/hero-crosseye.jpg" /> {/* Consider a more specific image for services page */}
+        <meta property="og:url" content="https://www.crosseye.com/services" /> {/* Replace with actual domain */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Services - CrossEye" />
+        <meta name="twitter:description" content="Discover the wide range of software and hardware services offered by CrossEye." />
+        <meta name="twitter:image" content="/hero-crosseye.jpg" /> {/* Consider a more specific image for services page */}
       </Head>
 
       {/* Header */}

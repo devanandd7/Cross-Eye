@@ -23,6 +23,14 @@ export default function ServicePage({ service }) {
         <title>{service.title} - CrossEye</title>
         <meta name="description" content={service.description} />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={`${service.title} - CrossEye`} />
+        <meta property="og:description" content={service.description} />
+        <meta property="og:image" content={service.mainImageUrl || 'https://via.placeholder.com/800x400'} />
+        <meta property="og:url" content={`https://www.crosseye.com/services/${service._id}`} /> {/* Replace with actual domain */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${service.title} - CrossEye`} />
+        <meta name="twitter:description" content={service.description} />
+        <meta name="twitter:image" content={service.mainImageUrl || 'https://via.placeholder.com/800x400'} />
       </Head>
 
       {/* Header */}

@@ -33,7 +33,7 @@ export default function CheckoutPage({ order }) {
           order_id: order.id,
           handler: function (response) {
             alert('Payment successful! Your payment ID is: ' + response.razorpay_payment_id);
-            // You can redirect to a success page or do other actions here
+            router.push('/products'); // Redirect to products page after successful payment
           },
           prefill: {
             name: 'CrossEye Customer', // You can get this from user session

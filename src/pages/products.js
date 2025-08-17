@@ -26,6 +26,14 @@ export default function Products({ products }) {
         <title>Our Products - CrossEye</title>
         <meta name="description" content="Explore the innovative product ecosystem of CrossEye, from our Smart Home Suite to Industrial IoT Solutions." />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content="Our Products - CrossEye" />
+        <meta property="og:description" content="Explore the innovative product ecosystem of CrossEye, from our Smart Home Suite to Industrial IoT Solutions." />
+        <meta property="og:image" content="/hero-crosseye.jpg" /> {/* Consider a more specific image for products page */}
+        <meta property="og:url" content="https://www.crosseye.com/products" /> {/* Replace with actual domain */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Products - CrossEye" />
+        <meta name="twitter:description" content="Explore the innovative product ecosystem of CrossEye, from our Smart Home Suite to Industrial IoT Solutions." />
+        <meta name="twitter:image" content="/hero-crosseye.jpg" /> {/* Consider a more specific image for products page */}
       </Head>
 
       {/* Header */}

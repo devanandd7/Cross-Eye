@@ -7,15 +7,35 @@ import clientPromise from '../../../lib/mongodb';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
-  const client = await clientPromise;
-  const db = client.db('crosseye');
-  const product = await db.collection('products').findOne({ _id: new ObjectId(id) });
 
-  return {
-    props: {
-      product: JSON.parse(JSON.stringify(product)),
-    },
-  };
+  if (!id || !ObjectId.isValid(id)) {
+    return {
+      notFound: true,
+    };
+  }
+
+  try {
+    const client = await clientPromise;
+    const db = client.db('crosseye');
+    const product = await db.collection('products').findOne({ _id: new ObjectId(id) });
+
+    if (!product) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        product: JSON.parse(JSON.stringify(product)),
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    return {
+      notFound: true, // Or redirect to an error page, depending on desired behavior
+    };
+  }
 }
 
 export default function ProductPage({ product }) {
@@ -52,6 +72,14 @@ export default function ProductPage({ product }) {
         <title>{product.title} - CrossEye</title>
         <meta name="description" content={product.description} />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={`${product.title} - CrossEye`} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={product.mainImageUrl || 'https://via.placeholder.com/800x400'} />
+        <meta property="og:url" content={`https://www.crosseye.com/products/${product._id}`} /> {/* Replace with actual domain */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${product.title} - CrossEye`} />
+        <meta name="twitter:description" content={product.description} />
+        <meta name="twitter:image" content={product.mainImageUrl || 'https://via.placeholder.com/800x400'} />
       </Head>
 
       {/* Header */}

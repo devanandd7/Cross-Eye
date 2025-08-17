@@ -13,6 +13,14 @@ export default function Home() {
         <title>CrossEye - Integrated Software & Hardware Solutions</title>
         <meta name="description" content="CrossEye specializes in creating seamless, integrated IoT solutions that combine the power of software and hardware to build a smarter, more connected world." />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content="CrossEye - Integrated Software & Hardware Solutions" />
+        <meta property="og:description" content="CrossEye specializes in creating seamless, integrated IoT solutions that combine the power of software and hardware to build a smarter, more connected world." />
+        <meta property="og:image" content="/hero-crosseye.jpg" />
+        <meta property="og:url" content="https://www.crosseye.com" /> {/* Replace with actual domain */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="CrossEye - Integrated Software & Hardware Solutions" />
+        <meta name="twitter:description" content="CrossEye specializes in creating seamless, integrated IoT solutions that combine the power of software and hardware to build a smarter, more connected world." />
+        <meta name="twitter:image" content="/hero-crosseye.jpg" />
       </Head>
 
       {/* Header */}
@@ -46,7 +54,7 @@ export default function Home() {
           </div>
           <div className="relative z-10 text-white text-left w-full px-6 md:px-12">
             <h1 className="text-7xl md:text-8xl font-extrabold mb-4 leading-tight">CROSSEYE</h1>
-            <p className="text-2xl md:text-3xl max-w-2xl">
+            <p className="text-2xl md:text-2xl max-w-2xl">
               We are an innovative startup at the intersection of software and hardware, creating seamless, integrated solutions to build a smarter, more connected world. We are not just a software or hardware company; we are a solutions company.
             </p>
           </div>

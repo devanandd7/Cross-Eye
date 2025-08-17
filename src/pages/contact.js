@@ -46,6 +46,14 @@ export default function ContactPage() {
         <title>Contact Us - CrossEye</title>
         <meta name="description" content="Contact CrossEye for issues, website inquiries, or general queries." />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content="Contact Us - CrossEye" />
+        <meta property="og:description" content="Contact CrossEye for issues, website inquiries, or general queries." />
+        <meta property="og:image" content="/hero-crosseye.jpg" /> {/* Consider a more specific image for contact page */}
+        <meta property="og:url" content="https://www.crosseye.com/contact" /> {/* Replace with actual domain */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Us - CrossEye" />
+        <meta name="twitter:description" content="Contact CrossEye for issues, website inquiries, or general queries." />
+        <meta name="twitter:image" content="/hero-crosseye.jpg" /> {/* Consider a more specific image for contact page */}
       </Head>
 
       {/* Header */}
