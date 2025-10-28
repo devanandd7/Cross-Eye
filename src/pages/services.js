@@ -9,6 +9,21 @@ export async function getServerSideProps() {
 }
 
 export default function Services({ services }) {
+  const stripMarkdown = (input) => {
+    if (!input) return '';
+    let s = input.replace(/`{1,3}[^`]*`{1,3}/g, '');
+    s = s.replace(/!\[[^\]]*\]\([^\)]*\)/g, '');
+    s = s.replace(/\[[^\]]*\]\([^\)]*\)/g, '');
+    s = s.replace(/^\s{0,3}(#{1,6})\s+/gm, '');
+    s = s.replace(/^\s{0,3}[-*+]\s+/gm, '');
+    s = s.replace(/^\s{0,3}\d+\.\s+/gm, '');
+    s = s.replace(/\*\*([^*]+)\*\*|__([^_]+)__/g, '$1$2');
+    s = s.replace(/\*([^*]+)\*|_([^_]+)_/g, '$1$2');
+    s = s.replace(/>\s?/g, '');
+    s = s.replace(/\n+/g, ' ');
+    return s.trim();
+  };
+
   return (
     <div className="bg-gray-50 text-gray-800 font-sans min-h-screen">
       <Head>
@@ -61,7 +76,7 @@ export default function Services({ services }) {
                   <div className="p-6 flex-grow flex flex-col">
                     <h3 className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">{service.division}</h3>
                     <h2 className="text-2xl font-bold text-gray-900 mt-2 mb-3">{service.title}</h2>
-                    <p className="text-gray-700 text-base flex-grow">{service.description}</p>
+                    <p className="text-gray-700 text-base flex-grow">{stripMarkdown(service.description).slice(0, 180)}{stripMarkdown(service.description).length > 180 ? '…' : ''}</p>
                   </div>
                   <div className="p-6 bg-gray-50 mt-auto">
                     <div className="w-full bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded hover:bg-indigo-700 transition-colors duration-300">

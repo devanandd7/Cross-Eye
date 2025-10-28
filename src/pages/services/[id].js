@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { ObjectId } from 'mongodb';
 import clientPromise from '../../../lib/mongodb';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -58,7 +60,9 @@ export default function ServicePage({ service }) {
           <div className="p-8">
             <h3 className="text-lg font-semibold text-indigo-600 uppercase tracking-wide">{service.division}</h3>
             <h1 className="text-4xl font-extrabold text-gray-900 mt-2 mb-4">{service.title}</h1>
-            <p className="text-xl text-gray-700 leading-relaxed">{service.description}</p>
+            <div className="markdown-body text-gray-800">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{service.description || ''}</ReactMarkdown>
+            </div>
             <div className="mt-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Image Gallery</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

@@ -1,0 +1,60 @@
+# Watch Together – Privacy Policy
+
+Effective date: 2025-10-28
+
+This Privacy Policy explains how the Watch Together Chrome extension (the “Extension”) handles information. We designed the Extension to operate with minimal data and to respect your privacy.
+
+## Summary
+- We do not sell personal data.
+- We do not use advertising or tracking pixels.
+- Audio from your microphone is only captured when you explicitly start voice chat (Talk).
+- Voice media is sent via WebRTC and is intended to be peer‑to‑peer; signaling (non‑media metadata) is sent to our signaling server to establish connections.
+- Room codes and basic display names are used only for facilitating sessions.
+
+## Data We Process
+- **Display name (optional):** A user‑provided name to show who performed an action. Stored locally in the browser (`chrome.storage.local`).
+- **Room codes:** Temporary or permanent codes used to join a session. Broadcast to connected participants to coordinate the room.
+- **Voice media (microphone):** When you click Talk and grant permission, the Extension captures your microphone stream and shares it with other room participants via WebRTC. The Extension requests permission each time or per your browser’s saved consent. If you stop Talk or revoke permission, audio capture stops.
+- **Video control events:** Play/Pause/Seek and selected video URL are sent to other room participants for synchronization.
+- **Technical signaling data:** WebRTC offers/answers/ICE candidates are relayed through a signaling server to set up connections among participants.
+
+## What We Do Not Collect
+- We do not read or store your browsing history.
+- We do not persist voice recordings or video content.
+- We do not collect payment information.
+- We do not use third‑party analytics within the Extension.
+
+## Where Data Flows
+- **Local (on your device):** Configuration (server address, display name, saved room code) is stored in `chrome.storage.local`.
+- **Signaling server:** The Extension connects to a WebSocket signaling endpoint (e.g., `wss://watch-together-extension-server.onrender.com`) to exchange room and signaling messages. This server relays data needed to set up peer connections and to synchronize playback.
+- **Peer connections (WebRTC):** When possible, voice media flows directly between participants’ devices. In some network situations, TURN relays may be necessary; in those cases, voice media may traverse a relay server but is not stored.
+
+## Retention
+- Local configuration remains on your device until you remove the Extension or clear browser storage.
+- Signaling messages are transient and used only to establish or maintain the session. We do not intentionally store media.
+
+## Security
+- WebSocket signaling uses TLS (`wss://`) where supported.
+- WebRTC encrypts media streams end‑to‑end between peers.
+- Room codes are random/short‑lived (for temporary rooms). Permanent codes are optional and user‑controlled.
+
+## Children’s Privacy
+The Extension is not directed to children under 13. If you are a parent or guardian and believe your child has provided personal information, please contact us so we can address it.
+
+## Your Choices
+- You can change or clear your display name and saved codes in the Extension settings.
+- You can stop sharing your microphone at any time by clicking Stop Talk or revoking browser permission.
+- You can remove the Extension to delete local data.
+
+## Contact
+If you have questions or requests about this policy, please contact: <YOUR_CONTACT_EMAIL>
+
+## Changes to This Policy
+We may update this policy to reflect changes in functionality or legal requirements. We will update the “Effective date” above when changes are made.
+
+---
+
+### Developer/Store Notes (non‑user facing)
+- The Extension does not execute remote code. It only exchanges session data via WebSocket and uses WebRTC for media.
+- No personal data is sold or used for advertising.
+- If a TURN server is used, it relays encrypted media and does not persist it.
